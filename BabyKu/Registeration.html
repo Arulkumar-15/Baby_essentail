@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='Register.css'>
+</head>
+<body>
+    <div class="container">
+        <div class="registration-form">
+            <h2>Register</h2>
+            <form id="registrationForm" action="#">
+                <div class="form-group">
+                    <div class="required">
+                        <label for="name">User Name:</label>
+                    </div>
+                    <input class="input" type="text" id="name" required pattern="\w{3,16}" placeholder="Enter your name">
+                    <span id="name-error" class="error"></span>
+
+                    <div class="required">
+                        <label for="email">Email:</label>
+                    </div>
+                    <input class="input" type="email" id="email" spellcheck="false" required placeholder="Enter your email address">
+                    <span id="email-error" class="error"></span>
+
+                    <div class="required">
+                        <label for="password">Password:</label>
+                    </div>
+                    <input class="input" type="password" id="password" placeholder="Enter your password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <span id="password-error" class="error"></span>
+
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input class="input" type="password" id="confirm-password" placeholder="Enter your password again" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <span id="check-password" class="error"></span>
+
+                    <input type="submit" value="Submit" onclick=saveData()>
+                    <p>Already have an account?</p>
+                    <button type="button" value="SignIn" onclick="redirectToLogin()">SignIn</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function redirectToLogin() {
+            window.location.href = "Login.html";
+        }
+
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            saveData();
+        });
+
+        function saveData() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert("All fields are required.");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            let userRecords = JSON.parse(localStorage.getItem("users")) || [];
+
+            if (userRecords.some((v) => v.email === email)) {
+                alert("Email already exists.");
+                return;
+            }
+
+            userRecords.push({
+                "name": name,
+                "email": email,
+                "password": password
+            });
+
+            alert("Profile updated.");
+            localStorage.setItem("users", JSON.stringify(userRecords));
+            redirectToLogin();
+            document.getElementById("registrationForm").reset();
+        }
+    </script>
+</body>
+</html>

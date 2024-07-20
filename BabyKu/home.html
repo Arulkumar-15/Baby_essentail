@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BabyKu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="logo">Baby<span class="baby">Ku</span></div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Testimonial</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <form class="search-form">
+                    <input type="text" placeholder="Search Products">
+                    <button type="submit"><i class="fa-solid fa-chevron-right"></i></button>
+                </form>
+                <div class="cart-login">
+                    <li><div class="fa-solid fa-basket-shopping" style="color: #c35555;"></i></li>
+                    <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="home-page">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="flat"><p><i class="fa-solid fa-tags"></i> FLAT 30% OFF + CASHBACK ! *</p></div>
+                <h1>Baby Essential <br>Fashion & Nursery</h1>
+                <p>Fermentum, cursus ultrices porttitor tincident susucipit quam facilisis<br>sit massa pellentesque mi quis elit elementum tristique urna.</p>
+                <div class="enim"><p>* Enim cras quarm et nullam risus nec tincidunt mattis nunc.</p></div>
+                <a href="#" class="shop-now-button">SHOP NOW</a>
+                <a href="#" class="Code"> Use Code: UF123F</a>
+            </div>
+            <div class="baby-overlay">
+                <div class="circle"></div>
+                <div class="baby-image">
+                    <img src="asset/Baby-header.png" alt="Happy Baby">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section>
+        <div class="gallery">
+            <div class="content-1">
+                <div>
+                    <p>BEST CHOICE FOR YOUR </p>
+                    <h1>PRINCESS</h1>
+                    <img src="asset/baby-1.png">
+                    <div class="shop-now">
+                        <p> shop now -></p>
+                    </div>
+                </div>
+                <div class="con"></div>
+            </div>
+
+            <div class="content-2">
+                <div>
+                    <div class="off-2">
+                        <p> 20% OFF</p>
+                    </div>
+                    <h3>New Born<br> Essentials</h3>
+                    <p> neque nunc in tortor nec posuere proien.</p>
+                    <div class="shop-now-2">
+                        <p> shop now -></p>
+                    </div>
+                </div>
+                <div class="baby-image-2">
+                    <img src="asset/baby-2.png">
+                </div>
+                <div class="con-2"></div>
+            </div>
+
+            <div class="content-3">
+                <div>
+                    <div class="NEW-ARRIVALS"><p>NEW ARRIVALS </p></div>
+                    <h3>HOT TOUS</h3>
+                    <img src="asset/baby-3.png">
+                    <div class="shop-now-3">
+                        <p> shop now -></p>
+                    </div>
+                </div>
+                <div class="con-3"><p>25%<br>OFF</p></div>
+                <div class="con-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let userRecords = JSON.parse(localStorage.getItem("users")) || [];
+        if (userRecords.length === 0) {
+            window.location.href = "Login.html";
+        }
+    </script>
+</body>
+</html>

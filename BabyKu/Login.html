@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='Login.css'>
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="registration-form">
+            <h2>Login</h2>
+            <form id="loginForm" action="#">
+                <div class="form-group">
+                    <div class="required">
+                        <label for="email">Email:</label>
+                    </div>
+                    <input class="input" type="email" id="email" spellcheck="false" required placeholder="Enter your email address">
+                    <span id="email-error" class="error"></span>
+
+                    <div class="required">
+                        <label for="password">Password:</label>
+                    </div>
+                    <input class="input" type="password" id="password" placeholder="Enter your password">
+                    <span id="password-error" class="error"></span>
+
+                    <input type="submit" value="Submit">
+                    <p>If you don't have account</p>
+                    <button type="submit" value="register" onclick="redirecToRegister()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       
+
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            saveData();
+        });
+
+        function saveData() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let userRecords = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if there is a user with matching email and password
+            let currentUser = userRecords.find((v) => v.email === email && v.password === password);
+
+            if (currentUser) {
+                console.log("Redirecting to home.html...");
+                window.location.href = "home.html";
+            } else {
+                alert("Login failed. Please check your email and password.");
+            }
+        }
+
+        function redirecToRegister(){
+            window.location.href = "Registeration.html";
+        }
+    </script>
+</body>
+</html>
